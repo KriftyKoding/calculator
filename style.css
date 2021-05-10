@@ -1,0 +1,42 @@
+.backgroundImage {
+  Position:fixed;
+  Top: 0;
+  left: 0%;
+  /* Width: 100vh; */
+  Height: 100vh;
+  Opacity: 0.35;
+  Z-index: -5000;
+}
+
+.backgroundImage img {
+  width:100vw;
+  height: 135vh;
+  object-fit: cover;
+}
+
+main{
+/* color scheme - https://www.colorcombos.com/color-schemes/187/ColorCombo187.html*/
+  color: #CC6633;
+  color: #FF9900;
+  color: #999999;
+  color: #CCCCCC;
+  color: #771100;
+  margin-bottom: 2.1rem;
+}
+
+.fixed-footer{
+  width: 100%;
+  position: fixed;        
+  background: #7a7a7a;
+  padding: .3rem;
+  margin-left: -.6rem;
+  color: #FF9900;
+  bottom: 0;
+  vertical-align: top;
+}
+
+.fixed-footer img {
+  height: 1.3rem;
+  vertical-align: bottom;
+  padding: 0 2px;
+}
