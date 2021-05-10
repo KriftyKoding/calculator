@@ -6,10 +6,7 @@ display(0);
 
 function numBttn(num){
     displayNum += num
-    // if (displayNum.charAt(0) == 0 && displayNum.length > 1) displayNum = displayNum.substr(1,1);
-    // console.log(num);
-    // console.log(displayNum);
-    // console.log(Number(5.5));
+    if (displayNum.charAt(0) == 0 && displayNum.length > 1) displayNum = displayNum.substr(1,1);
     display(displayNum);
 }
 
