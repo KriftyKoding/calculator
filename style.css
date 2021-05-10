@@ -24,6 +24,51 @@ main{
   margin-bottom: 2.1rem;
 }
 
+#container{
+  background-color: #771100;
+  height: 75vmin;
+  width: 60vmin;
+  Position:fixed;
+  Top: 48%;
+  left: 50%;
+  transform: translate(-48%, -50%);
+}
+
+#solution-container{
+  width: 90%;
+  height: 15%;
+  background-color: #7a7a7a;
+  margin: 5%;
+}
+
+#num-container{
+  width: 85%;
+  height: 73%;
+  margin: 5%;
+  background-color: #751c0d;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: auto auto auto auto;
+  gap: 2%;
+
+
+}
+
+#function-container{
+  grid-column: 4/5;
+  grid-row: 1/ 5;
+  display: grid;
+  grid-template-rows: auto auto auto auto auto;
+  gap: 2%;
+}
+
+#clear{
+  grid-column: 2/4;
+  grid-row: 4/5;
+  
+}
+
+
 .fixed-footer{
   width: 100%;
   position: fixed;        
