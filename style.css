@@ -1,3 +1,7 @@
+/**********************/
+/***Background Image***/
+/**********************/
+
 .backgroundImage {
   Position:fixed;
   Top: 0;
@@ -23,7 +27,9 @@ main{
   color: #771100;
   margin-bottom: 2.1rem;
 }
-
+/**********************/
+/*caculator containers**/
+/**********************/
 #container{
   background-color: #771100;
   height: 75vmin;
@@ -61,14 +67,16 @@ main{
 
 }
 
-#function-container{
+#operator-container{
   grid-column: 4/5;
   grid-row: 1/ 5;
   display: grid;
   grid-template-rows: auto auto auto auto auto;
   gap: 2%;
 }
-
+/**********************/
+/***footer container***/
+/**********************/
 .fixed-footer{
   width: 100%;
   position: fixed;        
