@@ -14,10 +14,10 @@ function numBttn(num){
 
 function clearBttn(){
     displayNum = "Math Assistance"
-    // displayNum = ""
     operator = ""
     originalNum = 0
     display(displayNum);
+    displayNum = ""
 }
 
 function operatorBttn(operatorBttn){
@@ -70,7 +70,6 @@ function subtract(){
     calcDisplay(originalNum - displayNum);
 }
 function divide(){
-    // calcDisplay(originalNum / displayNum);
     let result = originalNum / displayNum;
     let resultLength = result.toString().length;
     if (resultLength >= 12){
@@ -80,8 +79,6 @@ function divide(){
         alert("ERROR!!! MATH NOT POSSIBLE")
         calcDisplay("ERROR")
         originalNum = 0;
-
-        
     }else calcDisplay(result);
 }
 function multiply(){
