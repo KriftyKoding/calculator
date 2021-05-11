@@ -39,6 +39,13 @@ main{
   height: 15%;
   background-color: #7a7a7a;
   margin: 5%;
+  margin: 5%;
+  font-size: 8vmin;
+  text-align: right;
+}
+
+#solution{
+  margin: 1%;
 }
 
 #num-container{

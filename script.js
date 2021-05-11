@@ -37,7 +37,7 @@ function operatorBttn(operatorBttn){
 }
 
 function display(input){
-    let solutionDisplay = document.querySelector("#solution-container");
+    let solutionDisplay = document.querySelector("#solution");
     solutionDisplay.textContent = input;
 }
 function calcDisplay(result){
