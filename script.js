@@ -1,7 +1,6 @@
-let originalNum = 0
+let resultNum = 0
 let displayNum = ""
 let operator = ""
-let equalToggle = true;
 let operatorToggle = false;
 
 display("Math Assistance");
@@ -16,28 +15,30 @@ function numBttn(num){
     if (!displayNum.includes(".") & (displayNum.charAt(0) == 0 && displayNum.length > 1)) displayNum = displayNum.substr(1,1);
     display(displayNum);
     operatorToggle = false;
+    
+    if (operator == "=") {
+        resultNum = Number(displayNum);
+        displayNum = "";
+
+    }
 }
 
 function clearBttn(){
     displayNum = "Math Assistance"
     operator = ""
-    originalNum = 0
+    resultNum = 0
     display(displayNum);
     displayNum = ""
 }
 
 function operatorBttn(operatorBttn){
-    if (operator == "" && operatorBttn == "="){
-        equalToggle = false;
-        return;
-    }
-    if (operator == "" ||  equalToggle == false) {
-        console.log("operator");
-        originalNum = Number(displayNum);
+    if (operator == "" ) {
+        // console.log("operator");
+        // console.log(equalToggle);
+        resultNum = Number(displayNum);
         displayNum = ""
         operator = operatorBttn;
         operatorToggle = true;
-        equalToggle = true;
     } else{
         handleOperator()
         operator = operatorBttn
@@ -45,12 +46,7 @@ function operatorBttn(operatorBttn){
 }
 
 function handleOperator(){
-    if (operatorToggle == true) {
-        // console.log("og# " + originalNum)
-        // console.log("d# " + displayNum)
-        return;
-    
-    }else {
+    if (operatorToggle != true) {
         operatorToggle = true;
         switch(operator){
             case "+" : add(); break;
@@ -77,31 +73,31 @@ function display(input){
     solutionDisplay.textContent = input;
 }
 function calcDisplay(result){
-    originalNum = result;
+    resultNum = result;
     display(result);
     displayNum = ""
 }
 
 function add(){
     console.log("add");
-    console.log("og# " + originalNum)
+    console.log("og# " + resultNum)
     console.log("d# " + displayNum)
-    calcDisplay(Number(displayNum) + originalNum);
+    calcDisplay(Number(displayNum) + resultNum);
     console.log("result add");
-    console.log("og# " + originalNum)
+    console.log("og# " + resultNum)
     console.log("d# " + displayNum)
 }
 
 function subtract(){
-    calcDisplay(originalNum - displayNum);
+    calcDisplay(resultNum - displayNum);
 }
 function divide(){
-    let result = originalNum / displayNum;
+    let result = resultNum / displayNum;
     let resultLength = result.toString().length;
     if (resultLength >= 12){
         result = result.toString().slice(0,12);
     }
-    if (originalNum == 0) {
+    if (resultNum == 0) {
         alert("ERROR!!! MATH NOT POSSIBLE");
         clearBttn();
         display('ERROR');
@@ -112,14 +108,8 @@ function divide(){
 }
 function multiply(){ 
 
-    calcDisplay(displayNum * originalNum);
+    calcDisplay(displayNum * resultNum);
 }
 function equal(){
-    console.log("add");
-    console.log("og# " + originalNum)
-    console.log("d# " + displayNum)
-    // calcDisplay(originalNum);
-    originalNum
-    display(originalNum);
-    // displayNum = ""
+    display(resultNum);
 }
