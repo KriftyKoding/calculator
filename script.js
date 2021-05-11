@@ -3,16 +3,18 @@ let displayNum = ""
 let operator = ""
 let equalToggle = true;
 
-display(0);
+display("Math Assistance");
 
 function numBttn(num){
+    if (displayNum == "Math Assistance") displayNum = "";
     displayNum += num
     if (displayNum.charAt(0) == 0 && displayNum.length > 1) displayNum = displayNum.substr(1,1);
     display(displayNum);
 }
 
 function clearBttn(){
-    displayNum = ""
+    displayNum = "Math Assistance"
+    // displayNum = ""
     operator = ""
     originalNum = 0
     display(displayNum);
@@ -43,6 +45,15 @@ function operatorBttn(operatorBttn){
 
 function display(input){
     let solutionDisplay = document.querySelector("#solution");
+    let inputLength = input.length 
+    //default display
+     if (input == "Math Assistance") {
+        solutionDisplay.textContent = input;
+        return;}
+    //control Length
+    if(inputLength > 13) {
+        input = "..." + input.slice((inputLength-11), inputLength)
+    }
     solutionDisplay.textContent = input;
 }
 function calcDisplay(result){
