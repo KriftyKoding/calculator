@@ -9,6 +9,6 @@ ADDITIONAL
 *crossbowser support
 
 COSMETICS
-*make text bigger
+*make button text bigger
 *smaller screen 
-*overly long numbers display
+*make pretty

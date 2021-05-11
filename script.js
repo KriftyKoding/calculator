@@ -2,6 +2,7 @@ let originalNum = 0
 let displayNum = ""
 let operator = ""
 let equalToggle = true;
+let operatorToggle = false;
 
 display("Math Assistance");
 
@@ -10,6 +11,7 @@ function numBttn(num){
     displayNum += num
     if (displayNum.charAt(0) == 0 && displayNum.length > 1) displayNum = displayNum.substr(1,1);
     display(displayNum);
+    operatorToggle = false;
 }
 
 function clearBttn(){
@@ -29,15 +31,24 @@ function operatorBttn(operatorBttn){
         originalNum = Number(displayNum);
         displayNum = ""
         operator = operatorBttn;
+        operatorToggle = true;
         equalToggle = true;
     } else{
-        switch(operator){
-            case "+" : add(); break;
-            case "-" : subtract(); break;
-            case "/" : divide(); break;
-            case "*" : multiply(); break;
-            case "=" : equal(); break;
-            default : console.log('fail');
+        if (operatorToggle == true) {
+            // console.log("og# " + originalNum)
+            // console.log("d# " + displayNum)
+            return;
+
+        }else {
+            operatorToggle = true;
+            switch(operator){
+                case "+" : add(); break;
+                case "-" : subtract(); break;
+                case "/" : divide(); break;
+                case "*" : multiply(); break;
+                case "=" : equal(); break;
+                default : console.log('fail');
+            }
         }
         operator = operatorBttn
     }
@@ -81,11 +92,10 @@ function divide(){
         originalNum = 0;
     }else calcDisplay(result);
 }
-function multiply(){
+function multiply(){ 
     calcDisplay(displayNum * originalNum);
 }
 function equal(){
     calcDisplay(originalNum);
-    console.log("OG# " + originalNum);
-    console.log("dis# " + displayNum);
+
 }
