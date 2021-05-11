@@ -47,7 +47,7 @@ function display(input){
     let solutionDisplay = document.querySelector("#solution");
     let inputLength = input.length 
     //default display
-     if (input == "Math Assistance") {
+     if (input == "Math Assistance" || input == "ERROR") {
         solutionDisplay.textContent = input;
         return;}
     //control Length
@@ -57,7 +57,7 @@ function display(input){
     solutionDisplay.textContent = input;
 }
 function calcDisplay(result){
-    originalNum = result
+    originalNum = result;
     display(result);
     displayNum = ""
 }
@@ -70,7 +70,19 @@ function subtract(){
     calcDisplay(originalNum - displayNum);
 }
 function divide(){
-    calcDisplay(originalNum / displayNum);
+    // calcDisplay(originalNum / displayNum);
+    let result = originalNum / displayNum;
+    let resultLength = result.toString().length;
+    if (resultLength >= 12){
+        result = result.toString().slice(0,12);
+    }
+    if (originalNum == 0) {
+        alert("ERROR!!! MATH NOT POSSIBLE")
+        calcDisplay("ERROR")
+        originalNum = 0;
+
+        
+    }else calcDisplay(result);
 }
 function multiply(){
     calcDisplay(displayNum * originalNum);
