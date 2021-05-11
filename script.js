@@ -1,6 +1,7 @@
 let originalNum = 0
 let displayNum = ""
 let operator = ""
+let equalToggle = true;
 
 display(0);
 
@@ -18,11 +19,15 @@ function clearBttn(){
 }
 
 function operatorBttn(operatorBttn){
-   
-    if (operator == "") {
+    if (operator == "" && operatorBttn == "="){
+        equalToggle = false;
+        return;
+    }
+    if (operator == "" ||  equalToggle == false) {
         originalNum = Number(displayNum);
         displayNum = ""
         operator = operatorBttn;
+        equalToggle = true;
     } else{
         switch(operator){
             case "+" : add(); break;
@@ -61,4 +66,6 @@ function multiply(){
 }
 function equal(){
     calcDisplay(originalNum);
+    console.log("OG# " + originalNum);
+    console.log("dis# " + displayNum);
 }
