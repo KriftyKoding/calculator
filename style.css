@@ -69,13 +69,6 @@ main{
   gap: 2%;
 }
 
-#clear{
-  grid-column: 2/4;
-  grid-row: 4/5;
-  
-}
-
-
 .fixed-footer{
   width: 100%;
   position: fixed;        

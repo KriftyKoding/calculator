@@ -1,6 +1,3 @@
-Error
-***operator to many times
-
 ADDITIONAL
 *add decimal place
     -but make sure cant add more than one
@@ -8,7 +5,7 @@ ADDITIONAL
 *??add back button
 *crossbowser support
 
-COSMETICS
+<!-- COSMETICS -->
 *make button text bigger
 *smaller screen 
 *make pretty

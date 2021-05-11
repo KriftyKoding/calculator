@@ -8,8 +8,12 @@ display("Math Assistance");
 
 function numBttn(num){
     if (displayNum == "Math Assistance") displayNum = "";
-    displayNum += num
-    if (displayNum.charAt(0) == 0 && displayNum.length > 1) displayNum = displayNum.substr(1,1);
+    if (num != ".") {
+        displayNum += num;
+    } else if (!displayNum.includes(".")){
+        displayNum += num;
+    } 
+    if (!displayNum.includes(".") & (displayNum.charAt(0) == 0 && displayNum.length > 1)) displayNum = displayNum.substr(1,1);
     display(displayNum);
     operatorToggle = false;
 }
