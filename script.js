@@ -32,29 +32,34 @@ function operatorBttn(operatorBttn){
         return;
     }
     if (operator == "" ||  equalToggle == false) {
+        console.log("operator");
         originalNum = Number(displayNum);
         displayNum = ""
         operator = operatorBttn;
         operatorToggle = true;
         equalToggle = true;
     } else{
-        if (operatorToggle == true) {
-            // console.log("og# " + originalNum)
-            // console.log("d# " + displayNum)
-            return;
-
-        }else {
-            operatorToggle = true;
-            switch(operator){
-                case "+" : add(); break;
-                case "-" : subtract(); break;
-                case "/" : divide(); break;
-                case "*" : multiply(); break;
-                case "=" : equal(); break;
-                default : console.log('fail');
-            }
-        }
+        handleOperator()
         operator = operatorBttn
+    }
+}
+
+function handleOperator(){
+    if (operatorToggle == true) {
+        // console.log("og# " + originalNum)
+        // console.log("d# " + displayNum)
+        return;
+    
+    }else {
+        operatorToggle = true;
+        switch(operator){
+            case "+" : add(); break;
+            case "-" : subtract(); break;
+            case "/" : divide(); break;
+            case "*" : multiply(); break;
+            case "=" : equal(); break;
+            default : console.log('fail');
+        }
     }
 }
 
@@ -78,7 +83,13 @@ function calcDisplay(result){
 }
 
 function add(){
+    console.log("add");
+    console.log("og# " + originalNum)
+    console.log("d# " + displayNum)
     calcDisplay(Number(displayNum) + originalNum);
+    console.log("result add");
+    console.log("og# " + originalNum)
+    console.log("d# " + displayNum)
 }
 
 function subtract(){
@@ -104,6 +115,11 @@ function multiply(){
     calcDisplay(displayNum * originalNum);
 }
 function equal(){
-    calcDisplay(originalNum);
-
+    console.log("add");
+    console.log("og# " + originalNum)
+    console.log("d# " + displayNum)
+    // calcDisplay(originalNum);
+    originalNum
+    display(originalNum);
+    // displayNum = ""
 }
