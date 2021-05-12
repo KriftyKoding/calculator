@@ -32,8 +32,8 @@ main{
 /**********************/
 #container{
   background-color: #771100;
-  height: 75vmin;
-  width: 60vmin;
+  height: 90vmin;
+  width: 75vmin;
   Position:fixed;
   Top: 48%;
   left: 50%;
@@ -45,15 +45,17 @@ main{
   height: 15%;
   background-color: #7a7a7a;
   margin: 5%;
-  margin: 5%;
   font-size: 8vmin;
   text-align: right;
+  /* display: flex; */
 }
 
 #solution{
-  margin: 1%;
+  padding: 2.8%;
 }
-
+.calc-button{
+  font-size: xx-large;
+}
 #num-container{
   width: 85%;
   height: 73%;
@@ -75,7 +77,7 @@ main{
   gap: 2%;
 }
 /**********************/
-/***footer container***/
+/*caculator container**/
 /**********************/
 .fixed-footer{
   width: 100%;
