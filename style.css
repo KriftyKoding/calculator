@@ -32,8 +32,8 @@ main{
 /**********************/
 #container{
   background-color: #771100;
-  height: 90vmin;
-  width: 75vmin;
+  height: 75vmin;
+  width: 65vmin;
   Position:fixed;
   Top: 48%;
   left: 50%;
@@ -45,7 +45,7 @@ main{
   height: 15%;
   background-color: #7a7a7a;
   margin: 5%;
-  font-size: 8vmin;
+  font-size: 6.5vmin;
   text-align: right;
   /* display: flex; */
 }
@@ -94,4 +94,13 @@ main{
   height: 1.3rem;
   vertical-align: bottom;
   padding: 0 2px;
+}
+/**********************/
+/*****media querry*****/
+/**********************/
+@media screen and (max-width: 1080px) {
+  #container{
+    height: 100vmin;
+    width: 85vmin;
+  }
 }
