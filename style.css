@@ -48,7 +48,8 @@ main{
   height: 15%;
   background-color: #999999;
   margin: 5%;
-  font-size: 6.5vmin;
+  font-size: 5.5vmin;
+  font-weight: bold;
   text-align: right;
   /* display: flex; */
 }
@@ -94,6 +95,10 @@ input{
   border-right-color: #CC6633 ;
   border-bottom-color: #CC6633 ;
   
+}
+
+.operator-button:focus {
+    background-color: #999999;
 }
 
 
