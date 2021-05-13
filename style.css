@@ -33,17 +33,20 @@ main{
 #container{
   background-color: #771100;
   height: 75vmin;
-  width: 65vmin;
+  width: 60vmin;
   Position:fixed;
   Top: 48%;
   left: 50%;
   transform: translate(-48%, -50%);
+  border-radius: 6%;
+  
 }
 
 #solution-container{
+  border-radius: 12px;
   width: 90%;
   height: 15%;
-  background-color: #7a7a7a;
+  background-color: #999999;
   margin: 5%;
   font-size: 6.5vmin;
   text-align: right;
@@ -76,6 +79,28 @@ main{
   grid-template-rows: auto auto auto auto auto;
   gap: 2%;
 }
+
+input{
+  border-radius: 12%;
+	color: black;
+  /* border-color: chocolate; */
+  cursor: pointer;
+	transition: all .5s;
+	background-color: #CCCCCC;
+
+  border-right-width: .5vmin ;
+  border-bottom-width: .5vmin ;
+  border-color: #999999;
+  border-right-color: #CC6633 ;
+  border-bottom-color: #CC6633 ;
+  
+}
+
+
+
+
+
+
 /**********************/
 /*caculator container**/
 /**********************/

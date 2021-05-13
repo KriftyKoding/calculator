@@ -7,11 +7,7 @@ ADDITIONAL
 
 <!-- COSMETICS -->
 *make button text bigger
-*smaller screen 
 *make pretty
 
 
 <!-- current fix -->
-cosmetics
-html -change class name
-calculater title change size
