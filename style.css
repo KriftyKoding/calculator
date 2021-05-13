@@ -35,40 +35,42 @@ main{
   height: 75vmin;
   width: 60vmin;
   Position:fixed;
-  Top: 48%;
+  Top: 50%;
   left: 50%;
-  transform: translate(-48%, -50%);
+  transform: translate(-50%, -50%);
   border-radius: 6%;
   
 }
 
 #solution-container{
   border-radius: 12px;
-  width: 90%;
-  height: 15%;
+  width: 91%;
+  height: 14%;
   background-color: #999999;
   margin: 5%;
-  font-size: 5.5vmin;
+  margin-bottom: 3%;
+  font-size: 3.25rem;
   font-weight: bold;
   text-align: right;
-  /* display: flex; */
 }
 
 #solution{
-  padding: 2.8%;
+  padding: 4.5%;
 }
 .calc-button{
   font-size: xx-large;
 }
 #num-container{
   width: 85%;
-  height: 73%;
-  margin: 5%;
-  background-color: #751c0d;
+  height: 71%;
+  margin-left: 5%;
+  border-radius: 4%;
+  background-color: #f53c1c;
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-  grid-template-rows: auto auto auto auto;
-  gap: 2%;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 2.5%;
+  padding: 3%
 
 
 }
@@ -77,7 +79,7 @@ main{
   grid-column: 4/5;
   grid-row: 1/ 5;
   display: grid;
-  grid-template-rows: auto auto auto auto auto;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   gap: 2%;
 }
 
@@ -130,7 +132,14 @@ input{
 /**********************/
 @media screen and (max-width: 1080px) {
   #container{
-    height: 100vmin;
-    width: 85vmin;
+    height: 120vmin;
+    width: 95vmin;
+  }
+}
+
+@media (orientation: landscape){
+  #container{
+    height: 75vmin;
+    width: 60vmin;
   }
 }
