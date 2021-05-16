@@ -86,7 +86,6 @@ main{
 input{
   border-radius: 12%;
 	color: black;
-  /* border-color: chocolate; */
   cursor: pointer;
 	transition: all .5s;
 	background-color: #CCCCCC;
@@ -99,8 +98,16 @@ input{
   
 }
 
+input:focus{
+  outline: none;
+}
+
 .operator-button:focus {
     background-color: #999999;
+}
+
+.operator-button-focus{
+  background-color: #999999;
 }
 
 

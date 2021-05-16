@@ -2,12 +2,15 @@ let resultNum = 0
 let displayNum = ""
 let operator = ""
 let operatorToggle = false;
+let bttnTime;
+let bttnIDGlobal = "clear";
 
 display("Math Assistance");
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////Number Input/////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function numBttn(num){
+    checkTimeOut()
     // make sure only one decimal
     if (num != ".") {
         displayNum += num;
@@ -28,6 +31,7 @@ function numBttn(num){
 /////////////////////////////////////////////////////////////Clear Input//////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function clearBttn(){
+    checkTimeOut();
     operator = ""
     resultNum = 0
     display("Math Assistance");
@@ -38,6 +42,7 @@ function clearBttn(){
 /////////////////////////////////////////////////////////////Operator Input///////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function operatorBttn(operatorBttn){
+    checkTimeOut();
     if (operator == "" ) {
         console.log("its a operator");
         // console.log(equalToggle);
@@ -127,15 +132,49 @@ function equal(){
 /////////////////////////////////////////////////////////////Key down Listener////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 window.addEventListener("keydown", function(e){
-    console.log(e.key);
-    // console.log(e.key.match(/[0-9]/));
-    if (e.key.match(/[0-9]/) != null){
-        console.log("it is a number");
+      if (e.key.match(/[0-9]/) != null){
         numBttn(e.key);
     } else if(e.key.match(/[+\-*/=]/) != null ){
-        console.log("it is an operator");
         operatorBttn(e.key);
     }
-    
 
+    checkTimeOut();
+    
+    
+    switch(e.key){
+        case "+" : bttnColor("plus");  break;
+        case "-" : bttnColor("minus");  break;
+        case "/" : bttnColor("divide");  break;
+        case "*" : bttnColor("multiply");  break;
+        case "=" : bttnColor("equal");  break;
+        case "0" : bttnColor("zero"); break;
+        case "1" : bttnColor("one"); break;
+        case "2" : bttnColor("two"); break;
+        case "3" : bttnColor("three"); break;
+        case "4" : bttnColor("four"); break;
+        case "5" : bttnColor("five"); break;
+        case "6" : bttnColor("six"); break;
+        case "7" : bttnColor("seven"); break;
+        case "8" : bttnColor("eight"); break;
+        case "9" : bttnColor("nine"); break;
+        case "." : bttnColor("decimal"); break;
+    }
+
+    function bttnColor(bttnID){
+        bttnIDGlobal = bttnID;
+        let bttn = document.getElementById(bttnID)
+        bttn.classList.add('operator-button-focus')
+        bttnTime = setTimeout(function (){ 
+            bttn.classList.remove('operator-button-focus')
+        }, 2000);
+    }    
 })
+
+
+function checkTimeOut(){
+    let bttn = document.getElementById(bttnIDGlobal)
+    let test = bttn.getAttribute("class")
+    if (test.includes('operator-button-focus')){
+        bttn.classList.remove('operator-button-focus')
+    }
+}
