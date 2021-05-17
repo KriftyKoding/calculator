@@ -1,30 +1,35 @@
 let resultNum = 0
-let displayNum = ""
+let display = ""
 let operator = ""
 let operatorToggle = false;
 let bttnTime;
 let bttnIDGlobal = "clear";
 
-display("Math Assistance");
+handleDisplay("Math Assistance");
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////Number Input/////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function numBttn(num){
     checkTimeOut()
-    // make sure only one decimal
-    if (num != ".") {
-        displayNum += num;
-    } else if (!displayNum.includes(".")){
-        displayNum += num;
-    } 
-    // remove first 0 if equals 0___
-    if (!displayNum.includes(".") & (displayNum.charAt(0) == 0 && displayNum.length > 1)) displayNum = displayNum.substr(1,1);
-    display(displayNum);
-    operatorToggle = false;
-    //reset to new # after =
-    if (operator == "=") {
-        resultNum = Number(displayNum);
-        displayNum = "";
+    if((operator == "/") && (num == "0")){
+        resultNum = 0;
+        handleDisplay("You Can't do that!!!");
+        display = ""
+        operator = ""
+    } else {
+        // make sure only one decimal
+        if ((num != ".") || (!display.includes("."))   ){
+            display += num;
+        } 
+        // remove first 0 if equals 0___
+        if (!display.includes(".") & (display.charAt(0) == 0 && display.length > 1)) display = display.substr(1,1);
+        if (operator === "=") {
+            resultNum = Number(display);
+            operator = ""
+        }
+        
+        handleDisplay(display);
+        operatorToggle = false;
     }
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -34,8 +39,8 @@ function clearBttn(){
     checkTimeOut();
     operator = ""
     resultNum = 0
-    display("Math Assistance");
-    displayNum = ""
+    handleDisplay("Math Assistance");
+    display = ""
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -45,9 +50,8 @@ function operatorBttn(operatorBttn){
     checkTimeOut();
     if (operator == "" ) {
         console.log("its a operator");
-        // console.log(equalToggle);
-        resultNum = Number(displayNum);
-        displayNum = ""
+        resultNum = Number(display);
+        display = ""
         operator = operatorBttn;
         operatorToggle = true;
     } else{
@@ -73,7 +77,7 @@ function handleOperator(){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////Display Function/////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function display(input){
+function handleDisplay(input){
     let solutionDisplay = document.querySelector("#solution");
     let inputLength = input.length 
     //dont control OG display size
@@ -86,47 +90,45 @@ function display(input){
     }
     solutionDisplay.textContent = input;
 }
+
+//old display 
+
+
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////Calc Result???///////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function calcDisplay(result){
     resultNum = result;
-    display(result);
-    displayNum = ""
+    handleDisplay(result);
+    display = ""
 }
 
 function add(){
-    calcDisplay(Number(displayNum) + resultNum);
+    calcDisplay(Number(display) + resultNum);
 }
 
 function subtract(){
-    calcDisplay(resultNum - displayNum);
+    calcDisplay(resultNum - display);
 }
 
 function divide(){
-    let result = resultNum / displayNum;
+    let result = resultNum / display;
     let resultLength = result.toString().length;
     //round number
     if (resultLength >= 12){
         result = result.toString().slice(0,12);
     }
-    //create Error Alert 
-    if (resultNum == 0) {
-        alert("ERROR!!! MATH NOT POSSIBLE");
-        clearBttn();
-        display('ERROR');
-        operatorToggle = false;
-    }else{
-        calcDisplay(result);
+    calcDisplay(result);
     }
-}
 
 function multiply(){ 
-    calcDisplay(displayNum * resultNum);
+    calcDisplay(display * resultNum);
 }
 
 function equal(){
-    display(resultNum);
+    handleDisplay(resultNum);
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////Key down Listener////////////////////////////////////////////////////////////////////////////////////
@@ -139,8 +141,7 @@ window.addEventListener("keydown", function(e){
     }
 
     checkTimeOut();
-    
-    
+        
     switch(e.key){
         case "+" : bttnColor("plus");  break;
         case "-" : bttnColor("minus");  break;
@@ -169,7 +170,6 @@ window.addEventListener("keydown", function(e){
         }, 2000);
     }    
 })
-
 
 function checkTimeOut(){
     let bttn = document.getElementById(bttnIDGlobal)
