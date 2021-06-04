@@ -86,21 +86,18 @@ function handleOperator() {
 function handleDisplay(input) {
     let solutionDisplay = document.querySelector("#solution");
     let inputLength = input.length 
+    console.log("input legth")
     console.log(inputLength);
     console.log(input);
     //dont control OG display size
     if (input == openMessage || input == calcError) {
         console.log("error");
-        // solutionDisplay.textContent = input;
-    }
-    //control Length displayed
-    else if(inputLength == undefined){
-        console.log('attempt1')
-        input = Number(input).toExponential(5);
     } else if(inputLength > 17) {
         console.log("test");
         input = "..." + input.slice((inputLength-11), inputLength)
-        // input = Number(input).toExponential(5);
+    } else if(input >= 1e21){
+        console.log('exponetioal')
+        input = Number(input).toExponential(5);
     }
     solutionDisplay.textContent = input;
 }

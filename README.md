@@ -3,5 +3,5 @@
 
 
 ###### _fixes:_
-+ highlighted operator doesn't dissapear after being mouse-clicked
+
 
