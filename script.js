@@ -2,23 +2,25 @@ let resultNum = 0
 let display = ""
 let operator = ""
 let operatorToggle = false;
-let bttnTime;
+let bttnTimer;
 let bttnIDGlobal = "clear";
 
 handleDisplay("Math Assistance");
+window.addEventListener("keydown", keydownListener);
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////Number Input/////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function numBttn(num){
+function numBttn(num) {
     checkTimeOut()
-    if((operator == "/") && (num == "0")){
+    if((operator == "/") && (num == "0")) {
         resultNum = 0;
         handleDisplay("You Can't do that!!!");
         display = ""
         operator = ""
     } else {
         // make sure only one decimal
-        if ((num != ".") || (!display.includes("."))   ){
+        if ((num != ".") || (!display.includes("."))   ) {
             display += num;
         } 
         // remove first 0 if equals 0___
@@ -35,7 +37,7 @@ function numBttn(num){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////Clear Input//////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function clearBttn(){
+function clearBttn() {
     checkTimeOut();
     operator = ""
     resultNum = 0
@@ -46,7 +48,7 @@ function clearBttn(){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////Operator Input///////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function operatorBttn(operatorBttn){
+function operatorBttn(operatorBttn) {
     checkTimeOut();
     if (operator == "" ) {
         console.log("its a operator");
@@ -60,10 +62,10 @@ function operatorBttn(operatorBttn){
     }
 }
 // pick operator selected
-function handleOperator(){
+function handleOperator() {
     if (operatorToggle != true) {
         operatorToggle = true;
-        switch(operator){
+        switch(operator) {
             case "+" : add(); break;
             case "-" : subtract(); break;
             case "/" : divide(); break;
@@ -77,7 +79,7 @@ function handleOperator(){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////Display Function/////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function handleDisplay(input){
+function handleDisplay(input) {
     let solutionDisplay = document.querySelector("#solution");
     let inputLength = input.length 
     //dont control OG display size
@@ -91,58 +93,58 @@ function handleDisplay(input){
     solutionDisplay.textContent = input;
 }
 
-//old display 
-
 
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////Calc Result???///////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function calcDisplay(result){
+function operatorDisplay(result) {
     resultNum = result;
     handleDisplay(result);
     display = ""
 }
 
-function add(){
-    calcDisplay(Number(display) + resultNum);
+function add() {
+    operatorDisplay(Number(display) + resultNum);
 }
 
-function subtract(){
-    calcDisplay(resultNum - display);
+function subtract() {
+    operatorDisplay(resultNum - display);
 }
 
-function divide(){
+function divide() {
     let result = resultNum / display;
     let resultLength = result.toString().length;
     //round number
-    if (resultLength >= 12){
+    if (resultLength >= 12) {
         result = result.toString().slice(0,12);
     }
-    calcDisplay(result);
+    operatorDisplay(result);
     }
 
-function multiply(){ 
-    calcDisplay(display * resultNum);
+function multiply() { 
+    operatorDisplay(display * resultNum);
 }
 
-function equal(){
+function equal() {
     handleDisplay(resultNum);
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////Key down Listener////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-window.addEventListener("keydown", function(e){
-      if (e.key.match(/[0-9]/) != null){
+
+function keydownListener(e) {
+    if (e.key.match(/[0-9]/)) {
         numBttn(e.key);
-    } else if(e.key.match(/[+\-*/=]/) != null ){
+        
+    } else if (e.key.match(/[+\-*/=]/)) {
         operatorBttn(e.key);
     }
 
-    checkTimeOut();
+    // checkTimeOut();  // already handled in numBttn and operatorBttn
         
-    switch(e.key){
+    switch(e.key) { 
         case "+" : bttnColor("plus");  break;
         case "-" : bttnColor("minus");  break;
         case "/" : bttnColor("divide");  break;
@@ -161,20 +163,20 @@ window.addEventListener("keydown", function(e){
         case "." : bttnColor("decimal"); break;
     }
 
-    function bttnColor(bttnID){
-        bttnIDGlobal = bttnID;
+    function bttnColor(bttnID) { // paints the button pressed based on ID
+        bttnIDGlobal = bttnID;  // sets a global variable for later use to remove the painted button
         let bttn = document.getElementById(bttnID)
         bttn.classList.add('operator-button-focus')
-        bttnTime = setTimeout(function (){ 
+        bttnTimer = setTimeout(function () { // clears the painted button after a given amount of time
             bttn.classList.remove('operator-button-focus')
         }, 2000);
     }    
-})
+}
 
-function checkTimeOut(){
+function checkTimeOut() {   // checks for a previously painted button and removes the paint
     let bttn = document.getElementById(bttnIDGlobal)
     let test = bttn.getAttribute("class")
-    if (test.includes('operator-button-focus')){
+    if (test.includes('operator-button-focus')) {
         bttn.classList.remove('operator-button-focus')
     }
 }

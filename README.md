@@ -1,11 +1,7 @@
-ADDITIONAL
-
-*??add back button 
-
-<!-- bugs -->
-*add decimal place
-    -but make sure cant add more than one
-
-
-<!-- current fix -->
-*Keyboard shortcuts 
+###### _Bugs:_
+* add decimal place
+    * but make sure can't add more than one
++ highlighted operator doesn't dissapear after being mouse-clicked
++ calculator breaks when scaled down vertically
++ .... cant do 
++ *..... long . #
