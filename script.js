@@ -55,7 +55,6 @@ function clearBttn() {
 function operatorBttn(operatorBttn) {
     checkTimeOut();
     if (operator == "" ) {
-        console.log("its a operator");
         resultNum = Number(display);
         display = ""
         operator = operatorBttn;
@@ -75,7 +74,6 @@ function handleOperator() {
             case "/" : divide(); break;
             case "*" : multiply(); break;
             case "=" : equal(); break;
-            default : console.log('fail');
         }
     }
 }
@@ -86,17 +84,12 @@ function handleOperator() {
 function handleDisplay(input) {
     let solutionDisplay = document.querySelector("#solution");
     let inputLength = input.length 
-    console.log("input legth")
-    console.log(inputLength);
-    console.log(input);
     //dont control OG display size
     if (input == openMessage || input == calcError) {
-        console.log("error");
-    } else if(inputLength > 17) {
-        console.log("test");
+
+    } else if(inputLength >= 23) {
         input = "..." + input.slice((inputLength-11), inputLength)
     } else if(input >= 1e21){
-        console.log('exponetioal')
         input = Number(input).toExponential(5);
     }
     solutionDisplay.textContent = input;
@@ -144,7 +137,10 @@ function equal() {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function keydownListener(e) {
-    if (e.key.match(/[0-9]/)) {
+    if (e.key.match("F")) {
+        console.log("Known error ;)");
+        clearBttn();
+    }else if (e.key.match(/[0-9]/)) {
         numBttn(e.key);
         removeFocus();
         
