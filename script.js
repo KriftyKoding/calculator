@@ -4,8 +4,10 @@ let operator = ""
 let operatorToggle = false;
 let bttnTimer;
 let bttnIDGlobal = "clear";
+let openMessage = "Math Assistance"
+let calcError = "You Can't do that!!!"
 
-handleDisplay("Math Assistance");
+handleDisplay(openMessage);
 window.addEventListener("keydown", keydownListener);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -15,7 +17,7 @@ function numBttn(num) {
     checkTimeOut()
     if((operator == "/") && (num == "0")) {
         resultNum = 0;
-        handleDisplay("You Can't do that!!!");
+        handleDisplay(calcError);
         display = ""
         operator = ""
     } else {
@@ -24,7 +26,9 @@ function numBttn(num) {
             display += num;
         } 
         // remove first 0 if equals 0___
-        if (!display.includes(".") & (display.charAt(0) == 0 && display.length > 1)) display = display.substr(1,1);
+        if (!display.includes(".") && (display.charAt(0) == 0 && display.length > 1)) {
+            display = display.substr(1,1);
+        }
         if (operator === "=") {
             resultNum = Number(display);
             operator = ""
@@ -41,7 +45,7 @@ function clearBttn() {
     checkTimeOut();
     operator = ""
     resultNum = 0
-    handleDisplay("Math Assistance");
+    handleDisplay(openMessage);
     display = ""
 }
 
@@ -82,13 +86,21 @@ function handleOperator() {
 function handleDisplay(input) {
     let solutionDisplay = document.querySelector("#solution");
     let inputLength = input.length 
+    console.log(inputLength);
+    console.log(input);
     //dont control OG display size
-     if (input == "Math Assistance") {
-        solutionDisplay.textContent = input;
-        return;}
+    if (input == openMessage || input == calcError) {
+        console.log("error");
+        // solutionDisplay.textContent = input;
+    }
     //control Length displayed
-    if(inputLength > 13) {
+    else if(inputLength == undefined){
+        console.log('attempt1')
+        input = Number(input).toExponential(5);
+    } else if(inputLength > 17) {
+        console.log("test");
         input = "..." + input.slice((inputLength-11), inputLength)
+        // input = Number(input).toExponential(5);
     }
     solutionDisplay.textContent = input;
 }
