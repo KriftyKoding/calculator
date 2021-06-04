@@ -30,7 +30,7 @@ function numBttn(num) {
             display = display.substr(1,1);
         }
         if (operator === "=") {
-            resultNum = Number(display);
+            resultNum = parseFloat(display);
             operator = ""
         }
         
@@ -53,16 +53,23 @@ function clearBttn() {
 /////////////////////////////////////////////////////////////Operator Input///////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function operatorBttn(operatorBttn) {
+    console.log('ADDrESULLtNUM: ', resultNum);
+    
     checkTimeOut();
-    if (operator == "" ) {
-        resultNum = Number(display);
+    if (operator == "") {
+        console.log('BEFORE display: ', display);
+        console.log('BEFORE resultNum: ', resultNum);
+        resultNum = parseFloat(display);
+        console.log('display: ', parseFloat(display));
+        console.log('END: ', resultNum);
         display = ""
         operator = operatorBttn;
         operatorToggle = true;
-    } else{
+    } else {
         handleOperator()
         operator = operatorBttn
     }
+
 }
 // pick operator selected
 function handleOperator() {
@@ -82,15 +89,17 @@ function handleOperator() {
 /////////////////////////////////////////////////////////////Display Function/////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function handleDisplay(input) {
+    console.log('RESULTNUM: ', resultNum);
     let solutionDisplay = document.querySelector("#solution");
     let inputLength = input.length 
+    console.log("input length" + inputLength);
     //dont control OG display size
     if (input == openMessage || input == calcError) {
 
-    } else if(inputLength >= 23) {
+    } else if(inputLength >= 16) {
         input = "..." + input.slice((inputLength-11), inputLength)
-    } else if(input >= 1e21){
-        input = Number(input).toExponential(5);
+    } else if(input >= 1e16){
+        input = parseFloat(input).toExponential(5);
     }
     solutionDisplay.textContent = input;
 }
@@ -108,7 +117,8 @@ function operatorDisplay(result) {
 }
 
 function add() {
-    operatorDisplay(Number(display) + resultNum);
+    console.log('display: ', display);
+    operatorDisplay(parseFloat(display) + resultNum);
 }
 
 function subtract() {
