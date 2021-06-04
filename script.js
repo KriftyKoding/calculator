@@ -149,9 +149,11 @@ function equal() {
 function keydownListener(e) {
     if (e.key.match(/[0-9]/)) {
         numBttn(e.key);
+        removeFocus();
         
     } else if (e.key.match(/[+\-*/=]/)) {
         operatorBttn(e.key);
+        removeFocus();
     }
 
     // checkTimeOut();  // already handled in numBttn and operatorBttn
@@ -191,4 +193,13 @@ function checkTimeOut() {   // checks for a previously painted button and remove
     if (test.includes('operator-button-focus')) {
         bttn.classList.remove('operator-button-focus')
     }
+}
+
+function removeFocus() {
+    document.getElementById("plus").blur();
+    document.getElementById("minus").blur();
+    document.getElementById("multiply").blur();
+    document.getElementById("divide").blur();
+    document.getElementById("equal").blur();
+
 }
