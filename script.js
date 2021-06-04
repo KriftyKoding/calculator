@@ -180,6 +180,7 @@ function keydownListener(e) {
     function bttnColor(bttnID) { // paints the button pressed based on ID
         bttnIDGlobal = bttnID;  // sets a global variable for later use to remove the painted button
         let bttn = document.getElementById(bttnID)
+        bttn.focus()
         bttn.classList.add('operator-button-focus')
         bttnTimer = setTimeout(function () { // clears the painted button after a given amount of time
             bttn.classList.remove('operator-button-focus')
